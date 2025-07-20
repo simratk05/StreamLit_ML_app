@@ -31,8 +31,9 @@ with st.form("pokemon_form"):
 
 if submitted:
     features = np.array([[hp, attack, defense, special_attack, special_defense, speed,
-                          base_experience, height, weight]])
+                          base_experience, height, weight]])  # 2D shape
     prediction = model.predict(features)
     predicted_type = label_encoder.inverse_transform(prediction)[0]
     st.success(f"The predicted primary Pokémon type is: **{predicted_type.upper()}** 🔥")
+
 
