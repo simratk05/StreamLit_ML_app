@@ -11,6 +11,9 @@ st.set_page_config(page_title="Pokémon Type Classifier", layout="centered")
 
 st.title("🔮 Pokémon Type Classifier")
 st.markdown("Enter Pokémon stats to predict its **Primary Type**:")
+# Add this line to see the shape of input
+st.write("Feature values:", features)
+st.write("Feature shape:", features.shape)
 
 # Input form
 with st.form("pokemon_form"):
