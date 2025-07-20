@@ -8,12 +8,8 @@ model = joblib.load("pokemon_model.pkl")
 label_encoder = joblib.load("label_encoder.pkl")
 
 st.set_page_config(page_title="Pokémon Type Classifier", layout="centered")
-
 st.title("🔮 Pokémon Type Classifier")
 st.markdown("Enter Pokémon stats to predict its **Primary Type**:")
-# Add this line to see the shape of input
-st.write("Feature values:", features)
-st.write("Feature shape:", features.shape)
 
 # Input form
 with st.form("pokemon_form"):
@@ -35,8 +31,11 @@ with st.form("pokemon_form"):
 if submitted:
     features = np.array([[hp, attack, defense, special_attack, special_defense, speed,
                           base_experience, height, weight]])  # 2D shape
+
+    # ✅ Now safe to print
+    st.write("Feature values:", features)
+    st.write("Feature shape:", features.shape)
+
     prediction = model.predict(features)
     predicted_type = label_encoder.inverse_transform(prediction)[0]
     st.success(f"The predicted primary Pokémon type is: **{predicted_type.upper()}** 🔥")
-
-
